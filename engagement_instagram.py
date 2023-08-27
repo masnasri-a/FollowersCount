@@ -19,14 +19,15 @@ def get_instagram_likes(url):
     meta_content = soup.find("meta", property="og:description")
     content:str = meta_content.get_attribute_list('content')[0]
     content = content.split(" - ")[0]
-    print(content)
-    content_splitter = content.split(",")
+    content_splitter = content.split(", ")
     like = content_splitter[0].replace(" likes","")
-    like = like.replace("K","000").replace("M","000000").replace(" ","")
+    # like = like.replace("K","000").replace("M","000000").replace(" ","").replace(",","")
 
     comment = content_splitter[1].replace(" comments","").replace("K","000").replace("M","000000").replace(" ","")
-    print(f'Likes: {like}')
-    print(f'Comments: {comment}')
+    return {
+        "likes":like,
+        "comment":comment
+    }
     
 
 # Contoh penggunaan:
