@@ -19,8 +19,8 @@ def followers_youtube(username: str):
 
 
 @app.get("/facebook")
-def followers_facebook(url: str):
-    return follower_facebook(url)
+def followers_facebook(pageName: str):
+    return follower_facebook(pageName)
 
 
 @app.get("/twitter")
