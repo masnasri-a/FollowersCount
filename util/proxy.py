@@ -5,8 +5,8 @@ def get_proxy():
     json_response = response.json()
     # print(json_response)
     proxies = {
-        'http': f'{json_response["ip"]:{json_response["host"]}}',
-        'https': f'{json_response["ip"]:{json_response["host"]}}',
+        'http': f'{json_response["ip"]:{json_response["port"]}}',
+        'https': f'{json_response["ip"]:{json_response["port"]}}',
     }
     print(proxies)
     return proxies
