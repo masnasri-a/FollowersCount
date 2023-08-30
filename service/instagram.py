@@ -1,10 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
+from util import get_proxy
 
 def insight_instagram(url:str):
+    proxies = get_proxy()
     if "instagram.com" not in url:
         url = f"https://www.instagram.com/{url}/"
-    response = requests.get(url)
+    response = requests.get(url, proxies=proxies)
     soup = BeautifulSoup(response.text, 'html.parser')
     meta_content = soup.find("meta", property="og:description")
     content:str = meta_content.get_attribute_list('content')[0]
@@ -18,9 +20,10 @@ def insight_instagram(url:str):
     }
     
 def followers_instagram(url:str):
+    proxies = get_proxy()
     if "instagram.com" not in url:
         url = f"https://www.instagram.com/{url}/"
-    response = requests.get(url)
+    response = requests.get(url, proxies=proxies)
     soup = BeautifulSoup(response.text, 'html.parser')
     data = soup.find_all('meta', attrs={'property': 'og:description'})
     print(data)
