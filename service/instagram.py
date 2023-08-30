@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def insight_instagram(url):
+def insight_instagram(url:str):
     if "instagram.com" not in url:
         url = f"https://www.instagram.com/{url}/"
     response = requests.get(url)
@@ -23,6 +23,7 @@ def followers_instagram(url:str):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     data = soup.find_all('meta', attrs={'property': 'og:description'})
+    print(data)
     result:str = data[0].get('content').split(" ")[0]
     return {
         "followers":result
