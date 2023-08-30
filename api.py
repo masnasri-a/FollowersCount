@@ -18,4 +18,4 @@ app.include_router(followers_route, tags=['followers'])
 app.include_router(insight_route, tags=['insight'])
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=5050, workers=3)
+    uvicorn.run("api:app", host="0.0.0.0", port=5051, workers=3)
